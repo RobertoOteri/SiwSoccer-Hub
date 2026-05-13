@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Form Squadra </title>
+	</head>
+	<body>
+		<h1> Aggiungi Squadra </h1>
+		<form th:action = "@{/admin/squadre}" th:method = "POST" th:object = "${squadra}">
+			<div th:if = "${#fields.hasGlobalErrors()}">
+				<p th:each = "err : ${#fields.globalErrors()}" th:text = "${err}"></p>
+			</div>
+			<div>
+				Nome: <span><input type = "text" th:field = "${squadra.nome}"></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors ="*{nome}"></span>
+			</div>
+			<div>
+				Anno: <span><input type = "text" th:field = "${squadra.annoDiFondazione}"></span>
+				<span th:if = "${#fields.hasErrors('annoDiFondazione')}" th:errors = "*{annoDiFondazione}"></span>
+			</div>
+			<div>
+				Città: <span><input type = "text" th:field = "${squadra.citta}"></span>
+				<span th:if = "${#fields.hasErrors('citta')}" th:errors = "*{citta}"></span>
+			</div>
+			<div>
+				Url dell'immagine': <span><input type = "url" th:field = "${squadra.immagineUrl}"></span>
+				<span th:if = "${#fields.hasErrors('immagineUrl')}" th:errors = "*{immagineUrl}"></span>
+			</div>
+			<div>
+				<span><button type = "submit"> Conferma </button></span>
+			</div>
+		</form>
+	</body>
+</html>
