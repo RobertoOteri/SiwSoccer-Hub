@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Iscrivi Squadre</title>
+	</head>
+	<body>
+		<h1 th:text = "'Squadre disponibili per ' + ${torneo.nome}"></h1>
+		<form th:action="@{/tornei/{id}/iscrivi(id=${torneo.id})}" method = "POST">
+			<table>
+				<thead>
+					<tr>
+						<th>Seleziona</th>
+						<th>Nome Squadra</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="squadra : ${squadreDisponibili}">
+						<td>
+							<input type = "checkbox" name = "squadreIds" th:value = "${squadra.id}" />
+						</td>
+						<td th:text = "${squadra.nome}"> Nome Squadra </td>
+					</tr>
+				</tbody>
+			</table>
+			<button type = "submit"> Conferma Iscrizione </button>
+			<a th:href = "@{/tornei/{id}(id = ${torneo.id})}"> Annulla </a>
+		</form>
+	</body>
+</html>
+						
+	

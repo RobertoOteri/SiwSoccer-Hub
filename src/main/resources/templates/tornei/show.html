@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Torneo </title>
+	</head>
+	<body>
+		<div>
+			Nome: <span th:text = "${torneo.nome}"></span>
+		</div>
+		<div>
+			Anno: <span th:text = "${torneo.anno}"></span>
+		</div>
+		<div>
+			Descrizione: <span th:text = "${torneo.descrizione}"></span>
+		</div>
+		<div>
+		<h1> Lista Squadre </h1>
+				<ul>
+					<li th:each = "squadra : ${torneo.squadre}">
+						<a th:href = "@{'/squadre/' + ${squadra.id}}" th:text = "${squadra.nome}"></a>
+					</li>
+				</ul>
+		</div>
+		<div>
+		    <!-- Link che porta alla pagina di selezione delle squadre disponibili -->
+		    <a th:href="@{/tornei/{id}/squadre-disponibili(id=${torneo.id})}">
+		        <button type="button">Iscrivi nuove squadre</button>
+		    </a>
+		</div>
+	</body>
+	
+</html>
+	
